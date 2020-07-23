@@ -8,6 +8,8 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
+
 public class program extends Application {
     BorderPane borderPane = new BorderPane();
 
@@ -26,6 +28,14 @@ public class program extends Application {
         MenuItem exit = new MenuItem("Exit");
 
         file.getItems().addAll(openFile, openFolder, new SeparatorMenuItem(), settings, new SeparatorMenuItem(), exit);
+
+        openFile.setOnAction(e -> {
+            File selectedFile = fileChooser.showOpenDialog(frame);
+        });
+
+        openFolder.setOnAction(e -> {
+            File selectedDirectory  = directoryChooser.showDialog(frame);
+        });
 
         exit.setOnAction(e -> frame.close());
 
